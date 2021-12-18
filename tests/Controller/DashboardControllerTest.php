@@ -44,5 +44,4 @@ class DashboardControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1.title', 'Welcome to EasyAdmin 4');
     }
-
 }

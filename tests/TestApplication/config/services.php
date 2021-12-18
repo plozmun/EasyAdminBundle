@@ -6,6 +6,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Tests\TestApplication\Controller\CategoryCru
 use EasyCorp\Bundle\EasyAdminBundle\Tests\TestApplication\Controller\DashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Tests\TestApplication\Controller\SecureDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Tests\TestApplication\DataFixtures\AppFixtures;
+use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container) {
     $container->parameters()->set('locale', 'en');
@@ -21,15 +22,15 @@ return static function (ContainerConfigurator $container) {
 
     $services->set(DashboardController::class)
         ->tag('controller.service_arguments')
-        ->call('setContainer', [service('service_container')]);
+        ->call('setContainer', [new Reference('service_container')]);
 
     $services->set(SecureDashboardController::class)
         ->tag('controller.service_arguments')
-        ->call('setContainer', [service('service_container')]);
+        ->call('setContainer', [new Reference('service_container')]);
 
     $services->set(CategoryCrudController::class)
         ->tag('controller.service_arguments')
-        ->call('setContainer', [service('service_container')]);
+        ->call('setContainer', [new Reference('service_container')]);
 
     $services->set(AppFixtures::class)->tag('doctrine.fixture.orm');
 };

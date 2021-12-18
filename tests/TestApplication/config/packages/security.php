@@ -1,14 +1,12 @@
 <?php
 
-use EasyCorp\Bundle\EasyAdminBundle\Tests\TestApplication\Entity\User;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\InMemoryUser;
 
 $configuration = [
     'enable_authenticator_manager' => true,
 
     'password_hashers' => [
-        User::class => 'plaintext',
-        PasswordAuthenticatedUserInterface::class => 'plaintext',
+        InMemoryUser::class => 'plaintext',
     ],
 
     'providers' => [

@@ -304,7 +304,7 @@ class AdminUrlGeneratorTest extends WebTestCase
 
         $crudControllerRegistry = $this->getMockBuilder(CrudControllerRegistry::class)->disableOriginalConstructor()->getMock();
         $crudControllerRegistry->method('findCrudFqcnByCrudId')->willReturnMap([
-            ['a1b2c3', 'App\Controller\Admin\SomeCrudController'],
+            ['a1b2c3', 'App\Controller\Admin\SecureDashboardController'],
         ]);
 
         $container = Kernel::MAJOR_VERSION >= 6 ? static::getContainer() : self::$container;

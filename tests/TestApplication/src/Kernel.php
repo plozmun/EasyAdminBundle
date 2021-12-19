@@ -57,15 +57,15 @@ final class Kernel extends SymfonyKernel
 
     protected function configureContainer(ContainerBuilder $containerBuilder, LoaderInterface $loader): void
     {
-        $loader->load($this->getProjectDir().'/config/packages/*.php', 'glob');
-        $loader->load($this->getProjectDir().'/config/services.php', 'glob');
+        $loader->load($this->getProjectDir().'/config/{packages}/*.php', 'glob');
+        $loader->load($this->getProjectDir().'/config/{services}.php', 'glob');
 
-        $envConfigDir = $this->getProjectDir().'/config/packages/'.$this->environment;
+        $envConfigDir = $this->getProjectDir().'/config/{packages}/'.$this->environment;
         if (file_exists($envConfigDir)) {
             $loader->load($envConfigDir.'/*.php', 'glob');
         }
 
-        $envServicesFile = $this->getProjectDir().'/config/services_'.$this->environment.'.php';
+        $envServicesFile = $this->getProjectDir().'/config/{services_}'.$this->environment.'.php';
         if (file_exists($envServicesFile)) {
             $loader->load($envServicesFile, 'glob');
         }
